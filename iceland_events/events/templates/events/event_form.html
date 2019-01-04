@@ -1,0 +1,106 @@
+{% extends 'layout/main.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-6 col-md-8 col-md-offset-2">
+    <h1 class="text-center login-title">{{form_type|default:"Create Event"}}</h1>
+    <div class="wall">
+
+      <form action="" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+          <div class=" col-md-6 ">
+            <div class="form-group">
+               <label for="{{ form.name.id_for_label }}">Name</label>
+              {{ form.name|add_class:"form-control" }}
+              {{ form.name.errors }}
+            </div>
+          </div>
+
+          <div class=" col-md-6 ">
+            <div class="form-group">
+               <label for="{{ form.location.id_for_label }}">Location</label>
+              {{ form.location|add_class:"form-control" }}
+              {{ form.location.errors }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6 ">
+            <div class="form-group">
+               <label for="{{ form.imageurl.id_for_label }}">Image</label>
+              {{ form.imageurl }}
+              <div id="imgError" class="conf hidden">
+                <p id="imgErrorMsg"></p>
+                <p id="imgErrorOk" class="btn btn-default">Ok<p>
+              </div>
+
+              <div class="conImg">
+                {% if form_img.url %}
+                  <img id="imgEvent" src="{{ form_img.url }}">
+                {% else %}
+                  <img id="imgEvent" src="/media/images/icon_picture.png">
+                {% endif %}
+              </div>
+              {{ form.imageurl.errors }}
+            </div>
+          </div>
+
+          <div class=" col-md-6 ">
+            <div class="form-group">
+              <label for="{{ form.description.id_for_label }}">Description</label>
+              {{ form.description|add_class:"form-control"|attr:"rows:8" }}
+              {{ form.description.errors }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6 ">
+            <div class="form-group">
+              <label for="{{ form.time.id_for_label }}">Time</label>
+              <div class="bootstrap-timepicker">
+                {{ form.time|add_class:"form-control" }}
+                {{ form.time.errors }}
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-md-6 ">
+            <div class="form-group">
+              <label for="{{ form.date.id_for_label }}">Date</label>
+              {{ form.date|add_class:"form-control" }}
+              {{ form.date.errors }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-12 ">
+            <div class="form-group">
+              <div>
+                <label for="{{ form.musicgenres.id_for_label }}" class="control-label">Music genres</label>
+              </div>
+                {% for field in form.musicgenres %}
+                  {{ field }}
+                {% endfor %}
+              {{ form.musicgenres.errors }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6 col-md-offset-3">
+             <input class="btn btn-lg gray-btn btn-block" type="submit" value="{{form_type|default:"Create Event"}}">
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

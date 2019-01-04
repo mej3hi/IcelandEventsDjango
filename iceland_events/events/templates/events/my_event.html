@@ -1,0 +1,73 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+
+<div class="row eventrow">
+  {% if event_list %}
+    {% for event in event_list %}
+      <div class="col-md-offset-3 col-md-6" >
+        <div class= "event">
+          <div class="row">
+
+            <div class="col-md-6">
+              <h4 id="eventname" >{{ event.name }}</h4>
+            </div>
+            <div class="col-md-6">
+              <h4 id="eventlocation" >{{ event.location }}</h4>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="conImg">
+                <img id="imgEvent" src="{{ event.imageurl.url }}">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p id="eventdescription" >{{ event.description }}</p>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <h5 id="eventtime" >{{ event.time }}</h5>
+              <h5 id="eventdata" >{{ event.date|date:"d/m/Y" }}</h5>
+            </div>
+            <div class="col-md-6">
+              <h5 id="eventgenres" >Music type : </h5>
+              <p id="eventgenres" >{{ event.musicgenres }}</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row btn-margin">
+
+          <div class="col-md-3">
+            <a class="btn btn-warning btn-block" role="button" href="{% url 'events:edit_event' event.id %}">Edit</a>
+          </div>
+          <div class="col-md-3">
+            <button id="{{ event.id }}" class= "romoveBtn btn btn-danger btn-block">Remove</button>
+          </div>
+
+          <div id="{{ event.id }}" class="conf hidden">
+            <p>Are you sure you want to remove event</p>
+            <a href="{% url 'events:delete_event' event.id %}" role="button" class= "btn btn-default yesBtn">Yes</a>
+            <button id="{{ event.id }}" class="noBtn btn btn-default">No</button>
+          </div>
+
+        </div>
+      </div>
+		{% endfor %}
+	{% else %}
+		<div class="col-md-6">
+	  <h5>No Events</h5>
+	  </div>
+	{% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+
+<div class="row">
+
+  <div class="col-md-4">
+	<h3 class="currentDay">{{ calender_date }}</h3>
+  </div>
+
+  <div class="col-md-4">
+	<input id="searchdate" class="form-control" placeholder="Choose date" type="text" readonly="readonly"  />
+  </div>
+
+</div>
+
+<div class="row eventrow">
+	{% if event_list %}
+		{% for event in event_list %}
+			<div class="col-md-6" >
+				<div class= "event">
+					<div class="row">
+
+					<div class="col-md-6">
+						<h4 id="eventname" >{{ event.name }}</h4>
+					</div>
+					<div class="col-md-6">
+						<h4 id="eventlocation" >{{ event.location }}</h4>
+					</div>
+
+					</div>
+
+					<div class="row">
+
+					<div class="col-md-6">
+						<div class="conImg">
+							<img id="imgEvent" src="{{ event.imageurl.url }}">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<p id="eventdescription" >{{ event.description }}</p>
+					</div>
+
+					</div>
+
+					<div class="row">
+
+					<div class="col-md-6">
+						<h5 id="eventtime" >{{ event.time }}</h5>
+						<h5 id="eventdata" >{{ event.date|date:"d/m/Y" }}</h5>
+					</div>
+					<div class="col-md-6">
+						<h5 id="eventgenres" >Music type : </h5>
+						<p id="eventgenres" >{{ event.musicgenres }}</p>
+					</div>
+
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<div class="col-md-6">
+	  <h5>No Events</h5>
+	  </div>
+	{% endif %}
+</div>
+
+{% endblock %}

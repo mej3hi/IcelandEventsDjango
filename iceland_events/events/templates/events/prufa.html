@@ -1,0 +1,8 @@
+
+<h1>PRUFA</h1>
+
+    <form method="POST" action="" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="button" value="Save">
+    </form>
