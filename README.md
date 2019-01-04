@@ -9,7 +9,7 @@ Forritið er búið til í Django og því þarf að hafa það sett upp til að
 Ef maður þarf að fá nýtt lykilorð þá kemur email-ið fram í sent_emails möppuna með slóð til að búa nýtt lykilorð.
 
 ### Setja upp
-Hægt er að hala niður forritinu á þessari síðu (clone or download). Í möppuni fylgi icelandevents.sql skrá sem er með tilbúnir gögn fyrir MySql sem er hægt import beint. Í skráinn eru tilbúnir tónleikar og notandi sem hefur Username sem Username og password sem Userpassword til að geta logga sig inn á vefsíðuna.
+Hægt er að hala niður forritinu á þessari síðu (clone or download). Í möppuni fylgi icelandEventsDjango.sql skrá sem er með tilbúnir gögn fyrir MySql sem er hægt import beint. Í skráinn eru tilbúnir tónleikar og notandi sem hefur Username sem Username og password sem Userpassword til að geta logga sig inn á vefsíðuna.
 
 ### Myndir
 
